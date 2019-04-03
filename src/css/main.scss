@@ -2,6 +2,10 @@
 @import "fonts";
 @import "palette";
 
+@mixin spacing() {
+    padding: 2px 8px 12px;
+}
+
 // Uncomment for embeds
 //@import "embed";
 
@@ -11,4 +15,503 @@
 .element-atom,
 .interactive-atom {
     margin: 0 !important;
+}
+
+body {
+    background-color: #E9EFF1;
+    color: #121212;
+}
+
+.button {
+    padding-top: 2px;
+    background-color: #fff;
+    color: #121212;
+    border: none;
+
+    &:hover {
+        background-color: #ffe500;
+    }
+
+    .ap-discover & {
+        &:hover {
+            background-color: #121212;
+            color: #fff;
+        }
+    }
+}
+
+h1 {
+    @include spacing();
+    font-size: 35px;
+    line-height: 40px;
+    font-family: "Guardian Titlepiece";
+    color: #121212;
+
+    @include mq($from: tablet) {
+        font-size: 42px;
+        line-height: 42px;
+    }
+}
+
+p {
+    @include spacing();
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.ap-header {
+    height: 670px;
+    width: 100%;
+    position: relative;
+
+    @include mq($from: tablet) {
+        height: 90vh;
+    }
+}
+
+.ap-intro-headline {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    z-index: 1000;
+    width: 220px;
+
+    @include mq($from: desktop) {
+        width: 310px;
+    }
+
+    h1 {
+        font-size: 46px;
+        line-height: 50px;
+
+        @include mq($from: tablet) {
+            font-size: 65px;
+            line-height: 65px;
+        }
+    }
+
+
+    .space-change {
+        background-color: #ffe500;
+        padding: 2px;
+        display: inline-block;
+        visibility: hidden;
+        opacity: 0;
+        transition-delay: 1s;
+        -webkit-transition-delay: 1s;
+        transition: opacity 0.5s ease-in-out;
+        -webkit-transition: opacity 0.5s ease-in-out;
+        position: absolute;
+        z-index: -1;
+
+        &.display {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+.ap-intro-image {
+    height: 100vh;
+
+    .image {
+        position: absolute;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        -webkit-transition: opacity 0.5s ease-in-out;
+
+        &.center {
+            object-position: -238px;
+
+            @include mq ($from: desktop) {
+                object-position: center -90px;
+            }
+        }
+
+        &.bottom {
+            object-position: center -150px;
+
+            @include mq($from: tablet) {
+                object-position: 50% 72%;
+            }
+        }
+
+        &.top {
+            @include mq($from: tablet) {
+                object-position: 50% 6%;
+            }
+        }
+
+        &.display {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .final-image {
+        width: 62%;
+        position: absolute;
+        bottom: 100px;
+        right: 40px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        -webkit-transition: opacity 0.5s ease-in-out;
+
+
+        @include mq($from:mobileLandscape) {
+            left: 50%;
+            right: 50%;
+            width: 310px;
+            bottom: -102px;
+        }
+
+        &.display {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.ap-feature {
+    min-height: 490px;
+    height: 670px;
+    width: 100%;
+    position: relative;
+
+    @include mq($from: tablet) {
+        height: 100vh;
+    }
+    @include mq($from: desktop) {
+        height: 530px;
+    }
+    @include mq($from: wide) {
+        height: 490px;
+    }
+
+    h1 {
+        @include mq($from: tablet) {
+            padding-top: 60px;
+
+            &:before {
+                display: block;
+                content: '';
+                height: 1px;
+                background-color: #fff;
+                width: 20%;
+                margin-bottom: 6px;
+            }
+        }
+
+        @include mq($from: leftCol) {
+            padding-top: 150px;
+        }
+
+        @include mq($from: wide) {
+            padding-top: 150px;
+        }
+    }
+
+    &.ap-live {
+        background-color: #c70000;
+
+        h1, p {
+            color: #fff;
+        }
+
+        .content__main-column {
+            @include mq($from: desktop) {
+                padding-right: 290px;
+            }
+            @include mq($from: leftCol) {
+                padding-right: 0px;
+                padding-left: 380px;
+                margin-right: 14rem;
+            }
+            @include mq($from: wide) {
+                padding-left: 310px;
+            }
+        }
+
+        .splash_bubbles {
+            @include mq($from: tablet) {
+                right: 30px;
+            }
+            @include mq($from: leftCol) {
+                right: auto;
+                left: 30px;
+            }
+        }
+    }
+
+    &.ap-discover {
+        background-color: #ffe500;
+
+        .content__main-column {
+            @include mq($from: desktop) {
+                padding-right: 290px;
+            }
+            @include mq($from: leftCol) {
+                padding-right: 380px;
+                margin-right: 14rem;
+            }
+            @include mq($from: wide) {
+                padding-right: 310px;
+            }
+        }
+
+        .splash_bubbles {
+            @include mq($from: tablet) {
+                right: 30px;
+            }
+        }
+
+        h1 {
+            &:before {
+                background-color: #121212;
+            }
+        }
+    }
+}
+
+.splash_bubbles {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+
+    @include mq($from: mobileLandscape) {
+        width: 460px;
+        bottom: 6px;
+    }
+
+    @include mq($from: leftCol) {
+        width: 500px;
+    }
+}
+
+.splash_bubbles-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 345px;
+
+    @include mq($from: mobileLandscape) {
+        height: 424px;
+    }
+
+    @include mq($from: leftCol) {
+        height: 464px;
+    }
+}
+
+.splash_bubbles-left {
+    width: 20%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+
+    svg {
+        width: 130px;
+        height: auto;
+        position: absolute;
+        bottom: 23px;
+
+        ellipse {
+            transition: all 0.5s ease-in-out;
+            -webkit-transition: all 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        &.animate{
+            ellipse {
+                opacity: 1;
+                transform: translateX(0px);
+
+                &:nth-child(1){
+                    transition-delay: 0.2s;
+                    -webkit-transition-delay: 0.2s;
+                }
+                &:nth-child(2){
+                    transition-delay: 0.5s;
+                    -webkit-transition-delay: 0.5s;
+                }
+                &:nth-child(3){
+                    transition-delay: 0.8s;
+                    -webkit-transition-delay: 0.8s;
+                }
+            }
+        }
+
+        @include mq($from: mobileLandscape){
+            width: 190px;
+            bottom: 35px;
+        }
+    }
+
+    &.discover {
+        right: 0px;
+
+        svg {
+            bottom: 20px;
+            right:0px;
+        }
+    }
+}
+
+.splash_bubbles-right {
+    width: 80%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    &.discover {
+        left: 0px;
+    }
+}
+
+.ap-CTA {
+    padding-left: 6px;
+
+    .button {
+        margin-bottom: 12px;
+    }
+}
+
+.ap-list, .ap-premium-features {
+    background-color: #fff;
+
+    .content__main-column {
+        @include mq($from:desktop) {
+            border-left: 1px solid #121212;
+        }
+    }
+
+    p {
+        font-family: "Guardian Headline Full";
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+
+        .highlight {
+            background-color: #ffe500;
+            padding: 0px 4px;
+            display: inline-block;
+        }
+    }
+
+    ul {
+        @include spacing();
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0;
+
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            &:before {
+                display: block;
+                float: left;
+                border-radius: 50%;
+                background-color: orange;
+                content: '';
+                height: 14px;
+                width: 14px;
+                margin-top: 3px;
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.ap-list {
+    .content__main-column {
+        @include mq($from:desktop) {
+            padding-bottom: 18px;
+        }
+    }
+}
+
+.ap-premium-features {
+
+    ul {
+        overflow: hidden;
+        padding-bottom: 0px;
+        border-bottom: 1px solid #121212;
+        padding-bottom: 12px;
+
+        li {
+            float: left;
+            font-weight: 900;
+            margin-bottom: 12px;
+
+            svg {
+                float: left;
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+            &:before {
+                display: none;
+            }
+
+            .break {
+                display: block;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.ap-intro-copy {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    color: #fff;
+
+    h2 {
+        color: #121212;
+        background-color: #ffe500;
+        padding: 2px 4px;
+        display: inline;
+        position: absolute;
+        top: -31px;
+        font-size: 18px;
+        font-family: "Guardian Headline Full";
+        font-weight: 700;
+    }
+
+    .content__main-column {
+        background-color: #121212;
+        padding-bottom: 12px;
+    }
+}
+
+.ap-footer {
+    background-color: #121212;
+    height: 100px;
+    @include spacing();
+
+    svg {
+        margin-top: 12px;
+    }
+
+    p {
+        font-family: $f-sans-serif-text;
+        color: #fff;
+        font-size: 16px;
+    }
 }
